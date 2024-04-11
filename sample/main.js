@@ -1,4 +1,4 @@
-import { Following } from "../src/following.js";
+import { Following } from "../src/index.js";
 
 window.onload = function () {
   const ff = new Following();

@@ -10,6 +10,7 @@ class Following {
   }
   start(ele) {
     const divText = document.createElement("div");
+    count++;
     divText.style.position = "fixed"; // テキストのは位置を絶対位置にするための設定
     divText.style.whiteSpace = "nowrap"; // 画面右端での折り返しがなく、画面外へはみ出すようにする
     divText.style.left = ele.offsetLeft + "px";

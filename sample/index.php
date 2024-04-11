@@ -8,6 +8,7 @@
   </head>
   <body>
     <div class="example" style="width: 100px; height: 100px"></div>
-    <script src="main.js"></script>
+    <button id="button">dddddd</button>
+    <script type="module" src="main.js"></script>
   </body>
 </html>

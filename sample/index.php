@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <script src="https://unpkg.com/rythm.js/"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/rythm.js/2.2.5/rythm.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/keitamax-flowing-js@0.0.2/index.cd.js"></script>
   </head>
   <body>
     <div class="example" style="width: 100px; height: 100px; overflow: hidden;"></div>

@@ -1,22 +1,20 @@
 class Following {
-  constructor(comment = "") {
-    this.comment = comment;
-  }
-  setComment(comment) {
-    this.comment = comment;
+  constructor(ele) {
+    this.element = ele;
   }
   getFinishPx(ele) {
     return ele.clientWidth + ele.offsetLeft;
   }
 
-  start(ele) {
+  start(comment) {
+    const ele = this.element;
     const divText = document.createElement("div");
-    divText.style.position = "relative"; // テキストのは位置を絶対位置にするための設定
-    divText.style.whiteSpace = "nowrap"; // 画面右端での折り返しがなく、画面外へはみ出すようにする
+    divText.style.position = "relative";
+    divText.style.whiteSpace = "nowrap";
 
     const random = Math.round(Math.random() * ele.clientHeight);
     divText.style.top = random + "px";
-    divText.appendChild(document.createTextNode(this.comment));
+    divText.appendChild(document.createTextNode(comment));
     divText.style.fontSize = "20px";
     ele.appendChild(divText);
     var divTextWidth = -1 * divText.scrollWidth;

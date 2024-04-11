@@ -6,8 +6,7 @@
     <script src="https://cdn.jsdelivr.net/npm/keitamax-flowing-js@0.0.2/index.cd.js"></script>
   </head>
   <body>
-    <div class="example" style="width: 100px; height: 100px; overflow: hidden;"></div>
-    <button id="button" style="overflow: hidden;">dddddd</button>
+    <div class="example" style="width: 200px; height: 200px; overflow: hidden;"></div>
     <script type="module" src="main.js"></script>
   </body>
 </html>

@@ -1,32 +1,59 @@
 class Following {
-  constructor(comment = "") {
-    this.comment = comment;
-  }
-  setComment(comment) {
-    this.comment = comment;
+  constructor(ele) {
+    ele.style.overflow = "hidden";
+    this.element = ele;
+    this.speed = 10;
+    this.isRandom = true;
+    this.topPx = 0;
+    this.fontSize = 20;
   }
   getFinishPx(ele) {
     return ele.clientWidth + ele.offsetLeft;
   }
+  setSpeed(speed) {
+    this.speed = speed;
+  }
+  setIsRandom(isRandom) {
+    this.isRandom = isRandom;
+  }
+  setTopPx(topPx) {
+    this.topPx = topPx;
+  }
+  setFontSize(fontSize) {
+    this.fontSize = fontSize;
+  }
 
-  start(ele) {
+  start(comment) {
+    const ele = this.element;
     const divText = document.createElement("div");
-    divText.style.position = "relative"; // テキストのは位置を絶対位置にするための設定
-    divText.style.whiteSpace = "nowrap"; // 画面右端での折り返しがなく、画面外へはみ出すようにする
+    divText.style.position = "relative";
+    divText.style.whiteSpace = "nowrap";
 
-    const random = Math.round(Math.random() * ele.clientHeight);
-    divText.style.top = random + "px";
-    divText.appendChild(document.createTextNode(this.comment));
-    divText.style.fontSize = "20px";
+    divText.appendChild(document.createTextNode(comment));
+    divText.style.fontSize = this.fontSize + "px";
+    divText.style.width = "fit-content";
     ele.appendChild(divText);
+    //要素追加してから横幅と縦幅を取得する
     var divTextWidth = -1 * divText.scrollWidth;
     divText.style.left = divTextWidth + 1 + "px";
+
+    //TOPPXを設定 画面外に行かないよう＋ランダム
+    var topPx = this.topPx;
+    if (this.isRandom) {
+      topPx = Math.round(Math.random() * ele.clientHeight);
+    }
+    const maxTopPx = ele.clientHeight - divText.clientHeight;
+    if (topPx > maxTopPx) {
+      topPx = maxTopPx;
+    }
+    divText.style.top = topPx + "px";
 
     //実際に移動させるアニメーション処理
     const finish = this.getFinishPx(ele) + -1 * divTextWidth;
     let start = Date.now();
+    let speed = this.speed;
     let timer = setInterval(function () {
-      let timePassed = (Date.now() - start) / 10;
+      let timePassed = (Date.now() - start) / speed;
       divText.style.left = divTextWidth + timePassed + "px";
       if (timePassed > finish) clearInterval(timer);
     }, 20);
